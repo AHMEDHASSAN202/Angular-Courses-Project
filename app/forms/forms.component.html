@@ -1,0 +1,36 @@
+<form novalidate #firstForm="ngForm" (ngSubmit)="submitMethod(firstForm.value)" class="mt-5" autocomplete="off">
+    <div class="form-group">
+        <label for="email">Email address</label>
+        <input ngModel pattern='^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$' #emailInput="ngModel" [ngModel] name="email" type="email" class="form-control"
+            id="email" required aria-describedby="emailHelp" required>
+        <div *ngIf="emailInput.errors && emailInput.touched" class="alert alert-danger">
+            <span [hidden]="!emailInput.errors.pattern">please enter a valid email</span>
+            <span [hidden]="!emailInput.errors.required">email is required</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="first-name">First Name</label>
+        <input [ngModel] #firstName="ngModel" name="first-name" type="text" class="form-control" required minlength="3" maxlength="5" id="first-name">
+        <div *ngIf="firstName.errors && firstName.touched" class="alert alert-danger">
+            <span [hidden]="!firstName.errors.required">First Name name is required</span>
+            <span [hidden]="!firstName.errors.minlength">First Name must be a more than 3 chars</span>
+            <span [hidden]="!firstName.errors.maxlength">First Name must be a less than 5 chars</span>
+        </div>
+    </div>
+    <div ngModelGroup="group_input">
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input [ngModel] #lastName="ngModel" name="last-name" type="text" class="form-control" required minlength="3" maxlength="5" id="last-name">
+            <div *ngIf="lastName.errors && lastName.touched" class="alert alert-danger">
+                <span [hidden]="!lastName.errors.required">Last name is required</span>
+                <span [hidden]="!lastName.errors.minlength">last name must be a more than 3 chars</span>
+                <span [hidden]="!lastName.errors.maxlength">last name must be a less than 5 chars</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input [ngModel] name="password" type="password" class="form-control" required minlength="5" maxlength="15" id="password">
+        </div>
+    </div>
+    <button [disabled]="!firstForm.form.valid" type="submit" class="btn btn-primary">Submit</button>
+</form>

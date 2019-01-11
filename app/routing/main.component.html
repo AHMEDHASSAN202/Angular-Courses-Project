@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a [routerLink]='["/"]' class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a [routerLink]='["/courses"]' class="nav-link" href="#">Courses</a>
+            </li>
+            <li class="nav-item">
+                <a [routerLink]='["/about"]' class="nav-link disabled" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a [routerLink]='["/forms"]' class="nav-link disabled" href="#">Forms</a>
+            </li>
+            <li class="nav-item">
+                <a [routerLink]='["/api"]' class="nav-link disabled" href="#">API</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
